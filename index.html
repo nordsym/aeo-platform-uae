@@ -750,14 +750,25 @@
             let isDeleting = false;
             let typeSpeed = 100;
 
+            // Hide typewriter immediately when user focuses or types
+            heroInput.addEventListener('focus', () => {
+                typewriterOverlay.style.display = 'none';
+            });
+
+            heroInput.addEventListener('blur', () => {
+                if (heroInput.value.length === 0) {
+                    typewriterOverlay.style.display = 'flex';
+                }
+            });
+
             function typewrite() {
                 // Hide typewriter when user is typing
                 if (heroInput.value.length > 0) {
-                    typewriterOverlay.style.opacity = '0';
+                    typewriterOverlay.style.display = 'none';
                     setTimeout(typewrite, 500);
                     return;
                 } else {
-                    typewriterOverlay.style.opacity = '1';
+                    typewriterOverlay.style.display = 'flex';
                 }
 
                 const currentDomain = typewriterDomains[domainIndex];
