@@ -206,6 +206,45 @@
         .input-styled:focus { outline: none; border-color: var(--nord-cyan); box-shadow: 0 0 12px var(--cyan-glow); background-color: var(--nord-bg-primary); }
         body[data-theme="light"] .input-styled { color: var(--nord-text-primary); }
 
+        /* Modal Input Specific Styling */
+        .modal-input {
+            background-color: var(--input-bg);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        body:not([data-theme="light"]) .modal-input {
+            background-color: rgba(12, 20, 39, 0.6);
+            border-color: rgba(0, 212, 255, 0.15);
+        }
+
+        body[data-theme="light"] .modal-input {
+            background-color: #FFFFFF;
+            border-color: #E5E7EB;
+            color: #0A2540;
+        }
+
+        .modal-input:focus {
+            outline: none;
+            border-color: var(--nord-cyan);
+            box-shadow: 0 0 20px var(--cyan-glow);
+            background-color: var(--nord-bg-primary);
+        }
+
+        body[data-theme="light"] .modal-input:focus {
+            background-color: #FFFFFF;
+            box-shadow: 0 0 20px rgba(0, 191, 255, 0.15);
+        }
+
+        .modal-input::placeholder {
+            color: var(--nord-text-secondary);
+            opacity: 0.5;
+        }
+
+        body[data-theme="light"] .modal-input::placeholder {
+            color: #9CA3AF;
+            opacity: 0.7;
+        }
+
         details summary::-webkit-details-marker { display: none; }
         details[open] summary i { transform: rotate(180deg); }
 
@@ -342,9 +381,9 @@
                 <h2 class="text-3xl md:text-4xl mb-4" id="planModalTitle">Join the Waitlist</h2>
                 <p class="opacity-60 text-sm max-w-sm mx-auto leading-relaxed">We're rolling out the platform for <span id="planNameDisplay" class="font-bold text-[var(--nord-cyan)]"></span> in stages.</p>
             </div>
-            <form id="planForm" class="space-y-5" data-target="formspree">
-                <div><label class="block text-[11px] font-bold opacity-50 mb-3 uppercase tracking-widest">Business Email</label><input type="email" name="email" required placeholder="name@company.com" class="input-styled !bg-white/5"></div>
-                <div><label class="block text-[11px] font-bold opacity-50 mb-3 uppercase tracking-widest">Website</label><input type="url" name="url" placeholder="company.com" class="input-styled !bg-white/5"></div>
+            <form id="planForm" class="space-y-6" data-target="formspree">
+                <input type="email" name="email" required placeholder="name@company.com" class="input-styled modal-input">
+                <input type="url" name="url" placeholder="company.com" class="input-styled modal-input">
                 <input type="hidden" name="plan" id="planSelected">
                 <button type="submit" class="cta-button primary-solid w-full"><span>Secure Your Spot</span><i class="ph-bold ph-paper-plane-right"></i></button>
             </form>
@@ -364,12 +403,12 @@
                 <h2 class="text-3xl md:text-4xl mb-4">Let's Talk Future</h2>
                 <p class="opacity-60 text-sm max-w-sm mx-auto">Have questions about AEO or want to discuss a specific case?</p>
             </div>
-            <form id="contactForm" class="space-y-5" data-target="formspree">
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
-                    <div><input type="text" name="name" required placeholder="Name" class="input-styled !bg-white/5"></div>
-                    <div><input type="email" name="email" required placeholder="Email" class="input-styled !bg-white/5"></div>
+            <form id="contactForm" class="space-y-6" data-target="formspree">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <input type="text" name="name" required placeholder="Name" class="input-styled modal-input">
+                    <input type="email" name="email" required placeholder="Email" class="input-styled modal-input">
                 </div>
-                <textarea name="message" required rows="4" placeholder="Your message..." class="input-styled !bg-white/5 resize-none"></textarea>
+                <textarea name="message" required rows="4" placeholder="Your message..." class="input-styled modal-input resize-none"></textarea>
                 <button type="submit" class="cta-button primary-solid w-full">Send Message</button>
             </form>
             <div class="mt-8 pt-6 border-t border-white/10 text-center">
